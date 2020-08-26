@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Address Information</title>
+</head>
+<body>
+<center><h2> Register Address Here</h2></center>
+        {{resp}}<br><br>
+       <form action="http://localhost:5000/address/save/" method="post">
+                      Adr Id:<input type="text" name="aid" value="{{adr.adrId}}"><br><br>
+                      City:<input type="text" name="city" value="{{adr.adrCity}}"><br><br>
+                      Pincode:<input type="text" name="pin" value="{{adr.adrPin}}"><br><br>
+           <input type="submit"><br><br>
+
+       </form>
+        {% if adrs %}
+            <table border="2">
+                <thead>
+                <th>Adr Id</th>
+                <th>City</th>
+                <th>Pincode</th>
+                <th>Action</th>
+                </thead>
+                <tbody>
+                {% for adr in adrs %}
+                <tr>
+                    <td>{{adr.adrId}}</td>
+                    <td>{{adr.adrCity}}</td>
+                    <td>{{adr.adrPin}}</td>
+                    <td>
+                        <a href="http://localhost:5000/address/edit/{{adr.adrId}}">EDIT</a>
+                        <a href="http://localhost:5000/address/delete/{{adr.adrId}}">DELETE</a>
+                    </td>
+                </tr>
+                {% endfor %}
+                </tbody>
+
+            </table>
+        {% endif %}
+
+
+</body>
+</html>

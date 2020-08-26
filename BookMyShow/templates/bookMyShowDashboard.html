@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head>
+    <meta charset="UTF-8">
+    <title>BookMyShow</title>
+
+</head>
+<body>
+ <h1>Welcome To BookMyShow</h1>
+
+   <h3> {{resp}} </h3>
+      <div align="right">
+
+                <form action="http://localhost:5000/BookMyShow/" method="post">
+                Select City :<select name="mcity" >
+                    <option value="00">--SELECT--</option>
+            {% for city in cities %}
+                <option value="{{city}}">{{city}}</option>
+                {% endfor %}</select> <input type="submit">
+                    </form>
+
+           <form action="http://localhost:5000/thet/mov/" method="post">
+                Select Theater :<select name="mtheat">
+               <option value="00">---NONE---</option>
+                       {% for theater in theaters %}
+                <option value="{{theater}}">{{theater}}</option>
+                {% endfor %}</select> <input type="submit">
+
+               </form>
+
+          <form action="http://localhost:5000/book/movie/ticket/" method="post">
+                Select Movie :<select name="movie" >
+              <option value="00">--SELECT--</option>
+                 {% for movie in movies %}
+                <option value="{{movie.movfare}}">{{movie.movnm}} {{movie.movfare}}</option>
+                {% endfor %}</select><br>
+
+                Select Bank : <select name="bank">
+                    <option value="00">---NONE---</option>
+                    {% for bank in banks %}
+                    <option value="{{bank.banknm}}">{{bank.banknm}}</option>
+                    {% endfor %}
+         </select><br>
+        Mobile Number : <input type="text" name="mobile" > <br>
+
+              <input type="submit"><br>
+        </form>
+
+
+
+            <a href="/cust/save/"> Register Customer Here</a><br><a href="/cust/login/"> Login Here</a>
+        </div>
+ <div align="topleft"> <img src="https://www.dqindia.com/wp-content/uploads/2016/12/BMYSHOW.jpg"> <img src="https://www.marketingmind.in/wp-content/uploads/2019/03/BookMySHow-700x367.jpg"></div>
+</body>
+</html>

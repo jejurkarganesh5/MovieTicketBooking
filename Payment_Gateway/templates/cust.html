@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Bank Customer Information</title>
+</head>
+<body>
+    <center><h2>Open Bank Account Here</h2></center>
+        {{resp}}<br><br>
+        <form action="http://localhost:5000/bank/cust/save/" method="post">
+            Acc. No.:<input type="text" name="acno" value="{{cust.custAccNo}}"><br><br>
+            First Name:<input type="text" name="fnm" value="{{cust.custFname}}"><br><br>
+            Last Name:<input type="text" name="lnm" value="{{cust.custLname}}"><br><br>
+            Contact:<input type="text" name="mob" value="{{cust.custContact}}"><br><br>
+            Email:<input type="text" name="email" value="{{cust.custEmail}}"><br><br>
+            Acc. Type:<select name="actyp" >
+                            <option value="00">-SELECT-</option>
+                            <option value="Saving">SAVING </option>
+                            <option value="Current">CURRENT</option>
+                    </select><br><br>
+            Acc. Balance:<input type="text" name="bal" value="{{cust.custAccBal}}"><br><br>
+            Bank:<select name="bnk"> {% for bank in banks %}
+                            <option value="{{bank.bankId}}"> {{bank.bankName}}</option>
+                                      {% endfor %}
+                          </select><br><br>
+            <input type="submit"><br><br>
+
+        </form>
+
+</body>
+</html>

@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Movie Information</title>
+</head>
+<body>
+        <center><h2>Add Movie Information Here</h2></center>
+        {{resp}}<br><br>
+        <form action="http://localhost:5000/movie/save/" method="post">
+            Movie Id:<input type="text" name="mid" value="{{mov.movId}}"><br><br>
+            Movie Name:<input type="text" name="mnm" value="{{mov.movName}}"><br><br>
+            Movie Fare:<input type="text" name="mfare" value="{{mov.movFare}}"><br><br>
+            Movie Rating:<input type="text" name="mrating" value="{{mov.movRating}}"><br><br>
+            <input type="submit"><br><br>
+        </form>
+        {% if movs %}
+            <table border="1">
+                <thead>
+                    <th>Movie Id</th>
+                    <th>Movie Name</th>
+                    <th>Movie Fare</th>
+                    <th>Movie Rating</th>
+                    <th>Action</th>
+                </thead>
+                <tbody>
+                {% for mov in movs %}
+                <tr>
+                    <td>{{mov.movId}}</td>
+                    <td>{{mov.movName}}</td>
+                    <td>{{mov.movFare}}</td>
+                    <td>{{mov.movRating}}</td>
+                    <td>
+                        <a href="http://localhost:5000/movie/edit/{{mov.movId}}">EDIT</a>
+                        <a href="http://localhost:5000/movie/delete/{{mov.movId}}">DELETE</a>
+                    </td>
+                </tr>
+                {% endfor %}
+                </tbody>
+
+            </table>
+        {% endif %}
+
+</body>
+</html>

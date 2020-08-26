@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Customer Page</title>
+</head>
+<body>
+<center><h1>Customer Registration Page</h1></center>
+<br>
+        <form action="http://localhost:5000/cust/save/" method="post">
+            Customer Id:<input type="text" name="cid" value="{{cust.custId}}"><br><br>
+            First Name:<input type="text" name="cfnm" value="{{cust.custFname}}"><br><br>
+            Last Name:<input type="text" name="clnm" value="{{cust.custLname}}"><br><br>
+            Mobile Number:<input type="text" name="cmob" value="{{cust.custContact}}"><br><br>
+            Email Id:<input type="text" name="cemail" value="{{cust.custEmail}}"><br><br>
+            Username:<input type="text" name="username" value="{{log.username}}"><br><br>
+            Password:<input type="password" name="password" value="{{log.password}}"><br><br>
+            <input type="submit"><br><br>
+
+        </form>
+       <img src="https://m.media-amazon.com/images/S/aplus-media/sota/0f4fda95-e4cb-4e7c-b213-500e2a313c7f._SR970,300_.PNG">
+</body>
+</html>

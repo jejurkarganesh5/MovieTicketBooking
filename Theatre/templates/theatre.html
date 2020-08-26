@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Theater Information</title>
+</head>
+<body>
+        <center><h2>Add Theater Here</h2></center>
+        {{resp}}<br><br>
+        <form action="http://localhost:5000/theater/save/" method="post">
+            Theater Id:<input type="text" name="tid" value="{{th.thetId}}"><br><br>
+            Theater Name:<input type="text" name="tnm" value="{{th.thetName}}"><br><br>
+            Theater Grade:<input type="text" name="tgd" value="{{th.thetGrade}}"><br><br>
+            Movies:<select name="tmovs" multiple>
+                          {% for mov in movs %}
+                   <option value="{{mov.movId}}"> {{mov.movName}}</option>
+                            {% endfor %}
+                   </select><br><br>
+            Addresses:<select name="tadrs" multiple>
+                            {% for adr in adrs %}
+                    <option value="{{adr.adrId}}">{{adr.adrCity}}</option>
+                            {% endfor %}
+                    </select><br><br>
+            <input type="submit"><br><br>
+
+        </form>
+                {% if thtrs %}
+                <table border="1">
+                    <thead>
+                    <th>Theater Id</th>
+                    <th>Theater Name</th>
+                    <th>Theater Grade</th>
+                    <th>Movies</th>
+                    <th>Addresses</th>
+                    <th>Action</th>
+                    </thead>
+                    <tbody>
+                    {% for th in thtrs %}
+                    <tr>
+                        <td>{{th.thetId}}</td>
+                        <td>{{th.thetName}}</td>
+                        <td>{{th.thetGrade}}</td>
+                        <td>{% for mov in th.movies %}
+                            {{mov.movName}}
+                            {% endfor %}
+                        </td>
+                        <td>{% for adr in th.adrrefs %}
+                            {{adr.adrCity}}
+                            {% endfor %}
+                        </td>
+                        <td>
+                            <a href="http://localhost:5000/theater/edit/{{th.thetId}}">EDIT</a>
+                            <a href="http://localhost:5000/theater/delete/{{th.thetId}}">DELETE</a>
+                        </td>
+                    </tr>
+                    {% endfor %}
+                    </tbody>
+
+                </table>
+                {% endif %}
+
+</body>
+</html>
